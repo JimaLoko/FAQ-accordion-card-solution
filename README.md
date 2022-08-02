@@ -37,6 +37,9 @@ Active states
 
 ### Links
 
+- Solution URL: [FAQ accordion card solution](https://www.frontendmentor.io/solutions/faq-accordion-card-nLCyhZlZeC)
+- Live Site URL: [GitHub Pages](https://jimaloko.github.io/FAQ-accordion-card-solution/)
+
 ## My process
 
 ### Built with
