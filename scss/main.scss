@@ -1,0 +1,227 @@
+// variables -------------
+// ## Colors
+// ### Primary
+
+//# ### Text
+
+$Very-dark-desaturated-blue: hsl(238, 29%, 16%);
+$Soft-red: hsl(14, 88%, 65%);
+
+// #### Gradient
+
+// Background gradient:
+
+$Soft-violet: hsl(273, 75%, 66%);
+$Soft-blue: hsl(240, 73%, 65%);
+
+// ### Neutral
+
+// #### Text
+
+$Very-dark-grayish-blue: hsl(237, 12%, 33%);
+$Dark-grayish-blue: hsl(240, 6%, 50%);
+
+// #### Dividers
+
+$Light-grayish-blue: hsl(240, 5%, 91%);
+
+// reset ------------
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
+    color: $Very-dark-desaturated-blue;
+}
+
+img {
+    max-width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+//-------------------
+
+//mixins-------------
+
+@mixin flex($align: flex-start, $justify:flex-start, $direction:row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+//-------------------
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+        transform: translate3d(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        transform: translate3d(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        transform: translate3d(1);
+    }
+    to {
+        height: 0;
+        opacity: 0;
+        transform: scale(0);
+        transform: translate3d(20px);
+    }
+}
+
+body {
+    font-size: 1.2rem;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, $Soft-violet 35%, $Soft-blue 92%);
+    padding: 0 3rem;
+    @include flex(center, center, column);
+
+    .container {
+        background: url(../images/illustration-woman-online-desktop.svg) no-repeat, url(../images/bg-pattern-desktop.svg) no-repeat;
+        background-position: -18% 46%, -1091% 80%;
+        height: 63.7rem;
+        width: 100%;
+        max-width: 102rem;
+        padding-right: 5rem;
+        border-radius: 30px;
+        margin: 0 auto;
+        background-color: white;
+        @include flex(center,center);
+
+        .image {
+            width: 50%;
+            position: relative;
+            .box {
+                position: absolute;
+                top: -6rem;
+                left: -8.8rem;
+            }
+            .woman {
+                display: none;
+            }
+        }
+
+        .text {
+            padding: 2rem;
+            width: 50%;
+            h1 {
+                font-size: 4rem;
+                margin-bottom: 3.5rem;
+            }
+            .faq {
+                .accordion {
+                    .title {
+                        h2 {
+                            font-weight: 400;
+                            cursor: pointer;
+                            @include flex(center, space-between);
+                            img {
+                                margin-right: 2rem;
+                                height: 0.8rem;
+                                transition: all .3s;
+                            }
+                            &:hover {
+                                color: $Soft-red;
+                            }
+                        }
+                    }
+                    p {
+                        width: 35rem;
+                        animation: fadeOut .3s forwards;   
+                    }
+
+                    hr {
+                        width: 100%;
+                        margin: 2rem 0;
+                        border-color: $Light-grayish-blue;
+                        opacity: 0.4;
+                    }
+
+                    &.active {
+                        .title {
+                            h2 {
+                                font-weight: 700;
+                                margin-bottom: 1rem;
+                            }
+
+                            img {
+                                transform: rotate(180deg);
+                            }
+                        }
+                        p {
+                            height: 100%;
+                            display: block;
+                            animation: fadeIn .5s forwards;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        padding: 2rem;
+        color: white;
+    }
+    @media (max-width:830px) {
+        .container {
+            height: 54rem;
+            padding: 0;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: white url(../images/bg-pattern-mobile.svg) no-repeat;
+            background-position-x: 3.9rem;
+            .image {
+                width: 76%;
+                margin-bottom: 3rem;
+                .box {
+                    display: none;
+                }
+                .woman {
+                    display: block;
+                    position: absolute;
+                    top: -10.8rem;
+                    left: 0;
+                    z-index: 2;
+                }
+            }
+            .text {
+                width: 100%;
+                margin-top: 8rem;
+                h1 {
+                    text-align: center;
+                    font-size: 3.5rem;
+                }
+                .faq {
+                    .accordion {
+                        .title {
+                            h2 {
+                                font-size: 1.3rem;
+                                img {
+                                    height: 0.6rem;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        p {
+                            width: 26rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
